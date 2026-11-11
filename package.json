@@ -1,0 +1,12 @@
+{
+  "name": "app-gastos",
+  "version": "1.0.0",
+  "description": "PWA de controle de gastos: funciona offline, orçamento por categoria, projeção do mês e exportação CSV.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "start": "npx serve docs"
+  },
+  "license": "MIT",
+  "engines": { "node": ">=20" }
+}

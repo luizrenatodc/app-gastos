@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="description" content="App de controle de gastos que funciona offline, com orçamento por categoria e projeção do mês." />
+  <title>Gastos do Mês</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icone.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="estilo.css" />
+</head>
+<body>
+  <header>
+    <button id="ant" aria-label="Mês anterior">‹</button>
+    <h1 id="titulo-mes">—</h1>
+    <button id="prox" aria-label="Próximo mês">›</button>
+  </header>
+
+  <main>
+    <section class="cartao destaque">
+      <div class="rotulo">Gasto no mês</div>
+      <div id="total" class="grande">R$ 0,00</div>
+      <div id="projecao" class="sub"></div>
+    </section>
+
+    <section class="cartao">
+      <div class="rotulo">Por categoria</div>
+      <div class="pizza-linha">
+        <svg id="pizza" viewBox="0 0 120 120" width="140" height="140" role="img" aria-label="Gastos por categoria"></svg>
+        <ul id="categorias"></ul>
+      </div>
+    </section>
+
+    <section class="cartao">
+      <div class="linha-titulo"><div class="rotulo">Lançamentos</div><button id="csv" class="link">Exportar CSV</button></div>
+      <ul id="lista"></ul>
+      <p id="vazio" class="sub">Nenhum gasto neste mês ainda.</p>
+    </section>
+  </main>
+
+  <button id="novo" class="fab" aria-label="Novo gasto">＋</button>
+
+  <dialog id="dialogo">
+    <form id="form" method="dialog">
+      <h2>Novo gasto</h2>
+      <label>Descrição <input name="descricao" required maxlength="60" placeholder="Ex.: feira da semana" /></label>
+      <label>Valor (R$) <input name="valor" required inputmode="decimal" placeholder="0,00" /></label>
+      <label>Categoria <select name="categoria"></select></label>
+      <label>Data <input name="data" type="date" required /></label>
+      <p id="erros" class="erro" role="alert"></p>
+      <div class="acoes"><button value="cancelar" formnovalidate class="link">Cancelar</button><button id="salvar" value="salvar">Salvar</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="dialogo-orc">
+    <form id="form-orc" method="dialog">
+      <h2>Orçamento de <span id="orc-nome"></span></h2>
+      <label>Limite mensal (R$) <input name="limite" inputmode="decimal" placeholder="vazio = sem limite" /></label>
+      <div class="acoes"><button value="cancelar" class="link">Cancelar</button><button value="salvar">Salvar</button></div>
+    </form>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
